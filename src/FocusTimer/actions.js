@@ -1,19 +1,25 @@
-import state from './state.js'
-import * as timer from './timer.js'
+import state from "./state.js";
+import * as timer from "./timer.js";
+import * as el from "./elements.js";
 
-export function toggleRunning () {
-  state.isRunning = document.documentElement.classList.toggle('running')
+export function toggleRunning() {
+  state.isRunning = document.documentElement.classList.toggle("running");
 
-  timer.countdown()
+  timer.countdown();
 }
 
-export function reset () {
+export function reset() {
   state.isRunning = false;
-  document.documentElement.classList.remove('running')
+  document.documentElement.classList.remove("running");
+  timer.updateDisplay();
 }
 
-export function set () {}
+export function set() {
+  el.minutes.setAttribute("contenteditable", true);
+  el.seconds.setAttribute("contenteditable", true);
+  el.minutes.focus();
+}
 
-export function toggleMusic () {
-  state.isMute = document.documentElement.classList.toggle('music-on')
+export function toggleMusic() {
+  state.isMute = document.documentElement.classList.toggle("music-on");
 }
